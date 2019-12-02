@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtCustomerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtFatherOrHusbandName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtHouseNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtStreetNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtPlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtWardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtWardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtSubCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+    <TextView
+        android:id="@+id/txtCharges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp" />
+
+
+</LinearLayout>
