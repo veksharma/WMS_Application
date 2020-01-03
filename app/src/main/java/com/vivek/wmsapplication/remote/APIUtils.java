@@ -5,7 +5,7 @@ public class APIUtils {
     private APIUtils(){
     }
 
-    public static final String API_URL = "http://10.0.3.2:8080/wms/";
+    public static final String API_URL = "http://13.233.142.192:8080/wms/";
 
     public static CustomerService getCustomerService(){
         return RetrofitClient.getClient(API_URL).create(CustomerService.class);

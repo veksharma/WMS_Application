@@ -36,6 +36,9 @@ public class CustomerActivity extends AppCompatActivity {
     EditText etCategory;
     EditText etSubCategory;
     EditText etCharges;
+    EditText etServiceActivator;
+    EditText etDateOfActivation;
+    EditText etDataCollector;
     Button btnCreate;
     Button btnRead;
     Button btnUpdate;
@@ -49,7 +52,7 @@ public class CustomerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
 
-        setTitle("Customers");
+        setTitle("Customer Panel");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         txtId = (TextView) findViewById(R.id.txtId);
@@ -66,6 +69,9 @@ public class CustomerActivity extends AppCompatActivity {
         etCategory = (EditText) findViewById(R.id.etCategory);
         etSubCategory = (EditText) findViewById(R.id.etSubCategory);
         etCharges = (EditText) findViewById(R.id.etCharges);
+        etServiceActivator = (EditText) findViewById(R.id.etServiceActivator);
+        etDateOfActivation = (EditText) findViewById(R.id.etDateOfActivation);
+        etDataCollector = (EditText) findViewById(R.id.etDataCollector);
         btnCreate = (Button) findViewById(R.id.btnCreate);
         btnRead = (Button) findViewById(R.id.btnRead);
         btnUpdate = (Button) findViewById(R.id.btnUpdate);
@@ -88,6 +94,9 @@ public class CustomerActivity extends AppCompatActivity {
         String category = extras.getString("category");
         String subCategory = extras.getString("sub_category");
         String charges = extras.getString("charges");
+        String serviceActivator = extras.getString("serviceActivator");
+        String dateOfActivation = extras.getString("dateOfActivation");
+        String dataCollector = extras.getString("dataCollector");
 
         txtId.setText(id);
         etCode.setText(code);
@@ -103,25 +112,37 @@ public class CustomerActivity extends AppCompatActivity {
         etCategory.setText(category);
         etSubCategory.setText(subCategory);
         etCharges.setText(charges);
+        etServiceActivator.setText(serviceActivator);
+        etDateOfActivation.setText(dateOfActivation);
+        etDataCollector.setText(dataCollector);
 
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Customer c = new Customer();
-                c.setCode(etCode.getText().toString());
-                c.setCustomerName(etCustomerName.getText().toString());
-                c.setFatherOrHusbandName(etFatherOrHusbandName.getText().toString());
-                c.setHouseNumber(etHouseNumber.getText().toString());
-                c.setStreetNumber(etStreetNumber.getText().toString());
-                c.setPlace(etPlace.getText().toString());
-                c.setWardName(etWardName.getText().toString());
-                c.setWardNumber(etWardNumber.getText().toString());
-                c.setPhone(etPhone.getText().toString());
-                c.setEmail(etEmail.getText().toString());
-                c.setCategory(etCategory.getText().toString());
-                c.setSubCategory(etSubCategory.getText().toString());
-                c.setCharges(etCharges.getText().toString());
-                addCustomer(c);
+                etCode = (EditText) findViewById(R.id.etCode);
+                String code = etCode.getText().toString().trim();
+                if (code.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please enter Unique Code", Toast.LENGTH_SHORT).show();
+                } else {
+                    Customer c = new Customer();
+                    c.setCode(etCode.getText().toString());
+                    c.setCustomerName(etCustomerName.getText().toString());
+                    c.setFatherOrHusbandName(etFatherOrHusbandName.getText().toString());
+                    c.setHouseNumber(etHouseNumber.getText().toString());
+                    c.setStreetNumber(etStreetNumber.getText().toString());
+                    c.setPlace(etPlace.getText().toString());
+                    c.setWardName(etWardName.getText().toString());
+                    c.setWardNumber(etWardNumber.getText().toString());
+                    c.setPhone(etPhone.getText().toString());
+                    c.setEmail(etEmail.getText().toString());
+                    c.setCategory(etCategory.getText().toString());
+                    c.setSubCategory(etSubCategory.getText().toString());
+                    c.setCharges(etCharges.getText().toString());
+                    c.setServiceActivator(etServiceActivator.getText().toString());
+                    c.setDateOfActivation(etDateOfActivation.getText().toString());
+                    c.setDataCollector(etDataCollector.getText().toString());
+                    addCustomer(c);
+                }
             }
         });
 
@@ -160,6 +181,9 @@ public class CustomerActivity extends AppCompatActivity {
                     c.setCategory(etCategory.getText().toString());
                     c.setSubCategory(etSubCategory.getText().toString());
                     c.setCharges(etCharges.getText().toString());
+                    c.setServiceActivator(etServiceActivator.getText().toString());
+                    c.setDateOfActivation(etDateOfActivation.getText().toString());
+                    c.setDataCollector(etDataCollector.getText().toString());
                     updateCustomer(code, c);
                 }
             }
@@ -219,6 +243,9 @@ public class CustomerActivity extends AppCompatActivity {
                     etCategory.setText(response.body().getCategory());
                     etSubCategory.setText(response.body().getSubCategory());
                     etCharges.setText(response.body().getCharges());
+                    etServiceActivator.setText(response.body().getServiceActivator());
+                    etDateOfActivation.setText(response.body().getDateOfActivation());
+                    etDataCollector.setText(response.body().getDataCollector());
                 }
             }
 

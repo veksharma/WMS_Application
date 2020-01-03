@@ -24,11 +24,19 @@
 
                 <TextView
                     android:id="@+id/txtId"
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="0.3"
+                    android:text="ID" />
+
+                <TextView
+                    android:id="@+id/txtTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="1dp"
                     android:layout_weight="1"
-                    android:text="ID" />
+                    android:text="Payment Receiving Panel" />
 
             </TableRow>
 
@@ -41,7 +49,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Code" />
+                    android:ems="10"
+                    android:text="Code"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/etCode"
@@ -286,6 +297,63 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/txtServiceActivator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Service Act." />
+
+                <TextView
+                    android:id="@+id/etServiceActivator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDateOfActivation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Date of Act." />
+
+                <TextView
+                    android:id="@+id/etDateOfActivation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDataCollector"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Data Collector" />
+
+                <TextView
+                    android:id="@+id/etDataCollector"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
                     android:id="@+id/txtAmount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -298,7 +366,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="Enter receiving amount" />
+                    android:hint="Enter receiving amount"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
@@ -318,7 +388,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="Cash or Online" />
+                    android:hint="Cash or Online"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
@@ -338,7 +410,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="Enter receiver name" />
+                    android:hint="Enter receiver name"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
@@ -358,25 +432,80 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="Enter any remarks" />
+                    android:hint="Enter any remarks"
+                    android:singleLine="true" />
             </TableRow>
 
-            <LinearLayout
+            <!-- <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="5dp"
+                 app:layout_constraintBottom_toBottomOf="parent">-->
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                app:layout_constraintBottom_toBottomOf="parent">
+                android:layout_height="match_parent">
 
                 <Button
                     android:id="@+id/btnReceivePayment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="#26E02E"
                     android:onClick="print"
                     android:text="Receive Payment" />
+            </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/txtEndOfPage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtEndOfPage2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtEndOfPage3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtEndOfPage4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TableRow>
+
 
         </TableLayout>
 

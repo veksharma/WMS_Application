@@ -88,5 +88,26 @@
         android:layout_height="wrap_content"
         android:padding="3dp" />
 
+    <TextView
+        android:id="@+id/etServiceActivator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/etDateOfActivation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/etDataCollector"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:ems="10" />
+
 
 </LinearLayout>

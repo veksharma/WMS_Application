@@ -126,6 +126,9 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("category", response.body().getCategory());
                         intent.putExtra("sub_category", response.body().getSubCategory());
                         intent.putExtra("charges", response.body().getCharges());
+                        intent.putExtra("serviceActivator", response.body().getServiceActivator());
+                        intent.putExtra("dateOfActivation", response.body().getDateOfActivation());
+                        intent.putExtra("dataCollector", response.body().getDataCollector());
                         startActivity(intent);
                     }
                  else {

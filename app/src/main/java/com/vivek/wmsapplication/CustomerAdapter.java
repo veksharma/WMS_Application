@@ -45,6 +45,9 @@ public class CustomerAdapter extends ArrayAdapter {
         TextView txtCategory = (TextView) rowView.findViewById(R.id.txtCategory);
         TextView txtSubCategory = (TextView) rowView.findViewById(R.id.txtSubCategory);
         TextView txtCharges = (TextView) rowView.findViewById(R.id.txtCharges);
+        TextView txtServiceActivator = (TextView) rowView.findViewById(R.id.txtServiceActivator);
+        TextView txtDateOfActivation = (TextView) rowView.findViewById(R.id.txtDateOfActivation);
+        TextView txtDataCollector = (TextView) rowView.findViewById(R.id.txtDataCollector);
 
         txtId.setText(String.format("#ID: %d", customers.get(pos).getId()));
         txtCode.setText(String.format("Customer Code: %s", customers.get(pos).getCode()));
@@ -60,6 +63,9 @@ public class CustomerAdapter extends ArrayAdapter {
         txtCategory.setText(String.format("Customer: %s", customers.get(pos).getId()));
         txtSubCategory.setText(String.format("Customer: %s", customers.get(pos).getId()));
         txtCharges.setText(String.format("Customer: %s", customers.get(pos).getId()));
+        txtServiceActivator.setText(String.format("Customer: %s", customers.get(pos).getId()));
+        txtDateOfActivation.setText(String.format("Customer: %s", customers.get(pos).getId()));
+        txtDataCollector.setText(String.format("Customer: %s", customers.get(pos).getId()));
         txtId.setText(String.format("Customer: %s", customers.get(pos).getId()));
 
         rowView.setOnClickListener(new View.OnClickListener() {

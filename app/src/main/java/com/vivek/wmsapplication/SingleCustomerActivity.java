@@ -37,6 +37,9 @@ public class SingleCustomerActivity extends AppCompatActivity {
     TextView etCategory;
     TextView etSubCategory;
     TextView etCharges;
+    TextView etServiceActivator;
+    TextView etDateOfActivation;
+    TextView etDataCollector;
     Button btnReceivePayment;
     TextView txtId;
     EditText etAmount;
@@ -50,7 +53,7 @@ public class SingleCustomerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_customer);
 
-        setTitle("Customers");
+        setTitle("Receive Payment");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         txtId = (TextView) findViewById(R.id.txtId);
@@ -67,6 +70,9 @@ public class SingleCustomerActivity extends AppCompatActivity {
         etCategory = (TextView) findViewById(R.id.etCategory);
         etSubCategory = (TextView) findViewById(R.id.etSubCategory);
         etCharges = (TextView) findViewById(R.id.etCharges);
+        etServiceActivator = (TextView) findViewById(R.id.etServiceActivator);
+        etDateOfActivation = (TextView) findViewById(R.id.etDateOfActivation);
+        etDataCollector = (TextView) findViewById(R.id.etDataCollector);
         btnReceivePayment = findViewById(R.id.btnReceivePayment);
         etAmount = findViewById(R.id.etAmount);
         etMode = findViewById(R.id.etMode);
@@ -93,6 +99,9 @@ public class SingleCustomerActivity extends AppCompatActivity {
         String category = extras.getString("category");
         String subCategory = extras.getString("sub_category");
         String charges = extras.getString("charges");
+        String serviceActivator = extras.getString("serviceActivator");
+        String dateOfActivation = extras.getString("dateOfActivation");
+        String dataCollector = extras.getString("dataCollector");
 
         txtId.setText(id);
         etCode.setText(code);
@@ -108,6 +117,9 @@ public class SingleCustomerActivity extends AppCompatActivity {
         etCategory.setText(category);
         etSubCategory.setText(subCategory);
         etCharges.setText(charges);
+        etServiceActivator.setText(serviceActivator);
+        etDateOfActivation.setText(dateOfActivation);
+        etDataCollector.setText(dataCollector);
 
         btnReceivePayment.setOnClickListener(new View.OnClickListener() {
             @Override

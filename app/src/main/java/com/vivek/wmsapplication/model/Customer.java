@@ -47,6 +47,15 @@ public class Customer {
     @SerializedName("charges")
     @Expose
     private String charges;
+    @SerializedName("serviceActivator")
+    @Expose
+    private String serviceActivator;
+    @SerializedName("dateOfActivation")
+    @Expose
+    private String dateOfActivation;
+    @SerializedName("dataCollector")
+    @Expose
+    private String dataCollector;
 
     public Integer getId() {
         return id;
@@ -160,4 +169,27 @@ public class Customer {
         this.charges = charges;
     }
 
+    public String getServiceActivator() {
+        return serviceActivator;
+    }
+
+    public void setServiceActivator(String serviceActivator) {
+        this.serviceActivator = serviceActivator;
+    }
+
+    public String getDateOfActivation() {
+        return dateOfActivation;
+    }
+
+    public void setDateOfActivation(String dateOfActivation) {
+        this.dateOfActivation = dateOfActivation;
+    }
+
+    public String getDataCollector() {
+        return dataCollector;
+    }
+
+    public void setDataCollector(String dataCollector) {
+        this.dataCollector = dataCollector;
+    }
 }

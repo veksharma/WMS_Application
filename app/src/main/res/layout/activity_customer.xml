@@ -27,8 +27,16 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:text="ID" />
+
+                <TextView
+                    android:id="@+id/txtCustomerPanel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:text="Customer panel" />
 
             </TableRow>
 
@@ -330,12 +338,74 @@
                     android:singleLine="true" />
             </TableRow>
 
-
-            <LinearLayout
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                app:layout_constraintBottom_toBottomOf="parent">
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtServiceActivator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Service Act." />
+
+                <EditText
+                    android:id="@+id/etServiceActivator"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="Name of service activator"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDateOfActivation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Date of Act." />
+
+                <EditText
+                    android:id="@+id/etDateOfActivation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="Date of service activation"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtDataCollector"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Collector" />
+
+                <EditText
+                    android:id="@+id/etDataCollector"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:ems="10"
+                    android:hint="Name of data collector"
+                    android:singleLine="true"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <!--<Button
                     android:id="@+id/btnDelete"
@@ -350,7 +420,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#26E02E"
-                    android:text="Save" />
+                    android:text="Save"
+                    android:layout_column="1" />
 
                 <Button
                     android:id="@+id/btnRead"
@@ -358,7 +429,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#00BCD4"
-                    android:text="Search" />
+                    android:text="Search"
+                    android:layout_column="2" />
 
                 <Button
                     android:id="@+id/btnUpdate"
@@ -366,10 +438,60 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#FF5722"
-                    android:text="Update" />
+                    android:text="Update"
+                    android:layout_column="3" />
+            </TableRow>
 
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/txtEndOfPage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtEndOfPage2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtEndOfPage3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtEndOfPage4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </TableRow>
 
         </TableLayout>
 
