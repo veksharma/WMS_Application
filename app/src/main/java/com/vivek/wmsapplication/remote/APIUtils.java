@@ -1,5 +1,7 @@
 package com.vivek.wmsapplication.remote;
 
+import com.vivek.wmsapplication.model.LoginResponse;
+
 public class APIUtils {
 
     private APIUtils(){
@@ -13,6 +15,10 @@ public class APIUtils {
 
     public static PaymentService getPaymentService(){
         return RetrofitClient.getClient(API_URL).create(PaymentService.class);
+    }
+
+    public static LoginResponseService getLoginResponseService(){
+        return RetrofitClient.getClient(API_URL).create(LoginResponseService.class);
     }
 
 }

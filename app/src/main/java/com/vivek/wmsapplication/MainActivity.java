@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("WMS Application");
 
-        btnAddCustomer = (Button) findViewById(R.id.btnAddCustomer);
-//        btnGetCustomersList = (Button) findViewById(R.id.btnGetCustomersList);
-        btnGetCustomer = (Button) findViewById(R.id.btnGetCustomer);
-        listView = (ListView) findViewById(R.id.listView);
+        btnAddCustomer = findViewById(R.id.btnAddCustomer);
+//        btnGetCustomersList = findViewById(R.id.btnGetCustomersList);
+        btnGetCustomer = findViewById(R.id.btnGetCustomer);
+        listView = findViewById(R.id.listView);
         customerService = APIUtils.getCustomerService();
 
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         btnGetCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText = (EditText) findViewById(R.id.etSearchCustomer);
+                editText = findViewById(R.id.etSearchCustomer);
                 String code = editText.getText().toString();
                 if (code.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Enter customer Code", Toast.LENGTH_SHORT).show();
