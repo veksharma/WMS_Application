@@ -77,6 +77,7 @@ public class SingleCustomerActivity extends AppCompatActivity {
         etAmount = findViewById(R.id.etAmount);
         etMode = findViewById(R.id.etMode);
         etReceiveBy = findViewById(R.id.etReceiveBy);
+        etReceiveBy.setEnabled(false);
         etRemarks = findViewById(R.id.etRemarks);
 
 
@@ -102,6 +103,7 @@ public class SingleCustomerActivity extends AppCompatActivity {
         String serviceActivator = extras.getString("serviceActivator");
         String dateOfActivation = extras.getString("dateOfActivation");
         String dataCollector = extras.getString("dataCollector");
+        String username = extras.getString("username");
 
         txtId.setText(id);
         etCode.setText(code);
@@ -120,6 +122,7 @@ public class SingleCustomerActivity extends AppCompatActivity {
         etServiceActivator.setText(serviceActivator);
         etDateOfActivation.setText(dateOfActivation);
         etDataCollector.setText(dataCollector);
+        etReceiveBy.setText(username);
 
         btnReceivePayment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,7 +161,7 @@ public class SingleCustomerActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Payment> call, Response<Payment> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(SingleCustomerActivity.this, "Payment saved successfully!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SingleCustomerActivity.this, "Payment saved successfully!", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(SingleCustomerActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                 }

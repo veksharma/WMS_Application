@@ -52,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         customerService = APIUtils.getCustomerService();
 
+        Bundle extras = getIntent().getExtras();
+        final String username = extras.getString("username");
+
 
         btnAddCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 if (code.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Enter customer Code", Toast.LENGTH_SHORT).show();
                 } else {
-                    getCustomer(code);
+                    getCustomer(code, username);
                 }
             }
         });
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }*/
 
-    public void getCustomer(String code) {
+    public void getCustomer(String code, final String username) {
         Call<Customer> call = customerService.getCustomer(code);
         call.enqueue(new Callback<Customer>() {
             @Override
@@ -129,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("serviceActivator", response.body().getServiceActivator());
                         intent.putExtra("dateOfActivation", response.body().getDateOfActivation());
                         intent.putExtra("dataCollector", response.body().getDataCollector());
+                        intent.putExtra("username", username);
                         startActivity(intent);
                     }
                  else {
