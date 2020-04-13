@@ -111,7 +111,7 @@ public class SingleCustomerActivity extends AppCompatActivity {
         String dataCollector = extras.getString("dataCollector");
         String username = extras.getString("username");
 
-        ArrayList categories = HindiWords.MyCategories(cat, subCat);
+        ArrayList categories = HindiWords.GetCategories(cat, subCat);
 
         txtId.setText(id);
         tvCode.setText(code);

@@ -19,6 +19,7 @@ import com.vivek.wmsapplication.model.Customer;
 import com.vivek.wmsapplication.model.Result;
 import com.vivek.wmsapplication.remote.APIUtils;
 import com.vivek.wmsapplication.remote.CustomerService;
+import com.vivek.wmsapplication.utils.Charges;
 import com.vivek.wmsapplication.utils.HindiWords;
 import com.vivek.wmsapplication.utils.Wards;
 
@@ -46,6 +47,8 @@ public class CustomerActivity extends AppCompatActivity {
     String etCategory;
     String etSubCategory;
     EditText etCharges;
+    Integer getCharges;
+    Integer CatForCharges;
     EditText etServiceActivator;
     EditText etDateOfActivation;
     EditText etDataCollector;
@@ -82,6 +85,7 @@ public class CustomerActivity extends AppCompatActivity {
         etPhone = findViewById(R.id.etPhone);
         etEmail = findViewById(R.id.etEmail);
         etCharges = findViewById(R.id.etCharges);
+        etCharges.setEnabled(false);
         etServiceActivator = findViewById(R.id.etServiceActivator);
         etServiceActivator.setEnabled(false);
         etDateOfActivation = findViewById(R.id.etDateOfActivation);
@@ -91,6 +95,8 @@ public class CustomerActivity extends AppCompatActivity {
         btnCreate = findViewById(R.id.btnCreate);
         btnRead = findViewById(R.id.btnRead);
         btnUpdate = findViewById(R.id.btnUpdate);
+
+        getCharges=-1;
 
         spCategory = findViewById(R.id.spCategory);
         spSubCategory = findViewById(R.id.spSubCategory);
@@ -128,7 +134,7 @@ public class CustomerActivity extends AppCompatActivity {
 //      Category Spinner Starts sc=999
 
         arrayAdapter_category = new ArrayAdapter<>(getApplicationContext(),
-                R.layout.support_simple_spinner_dropdown_item, HindiWords.MyCategories(1, 999));
+                R.layout.support_simple_spinner_dropdown_item, HindiWords.GetCategories(1, 999));
         spCategory.setAdapter(arrayAdapter_category);
 
 //        Category Spinner Ends
@@ -140,7 +146,8 @@ public class CustomerActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 arrayAdapter_SubCategory = new ArrayAdapter<>(getApplicationContext(),
-                        R.layout.support_simple_spinner_dropdown_item, HindiWords.MyCategories(position, 888));
+                        R.layout.support_simple_spinner_dropdown_item, HindiWords.GetCategories(position, 888));
+                CatForCharges = position + 1;
                 int pos = position + 1;
                 etCategory = Integer.toString(pos);
                 spSubCategory.setAdapter(arrayAdapter_SubCategory);
@@ -155,9 +162,16 @@ public class CustomerActivity extends AppCompatActivity {
         spSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                int SubCatForCharges = position + 1;
                 int pos = position + 1;
                 etSubCategory = Integer.toString(pos);
+                System.out.println(CatForCharges);
+                System.out.println(SubCatForCharges);
+                getCharges = Charges.GetCharges(CatForCharges, SubCatForCharges);
+                System.out.println(getCharges);
+                if (getCharges != -1) {
+                    etCharges.setText(getCharges.toString());
+                }
             }
 
             @Override
@@ -203,7 +217,7 @@ public class CustomerActivity extends AppCompatActivity {
         autoCompleteWardName.setText(wardName);
         etPhone.setText(phone);
         etEmail.setText(email);
-        etCharges.setText(charges);
+//        etCharges.setText(getCharges);
         etServiceActivator.setText(username);
         etDateOfActivation.setText(date);
         etDataCollector.setText(username);

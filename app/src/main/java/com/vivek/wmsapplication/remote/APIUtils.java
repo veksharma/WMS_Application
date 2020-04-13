@@ -6,8 +6,8 @@ public class APIUtils {
     private APIUtils(){
     }
 
-    public static final String API_URL = "http://10.0.3.2:8080/wms/";     //genymotion
-//    public static final String API_URL = "http://35.154.149.37:8080/wms/";      //AWS
+//    public static final String API_URL = "http://10.0.3.2:8080/wms/";     //genymotion
+    public static final String API_URL = "http://35.154.149.37:8080/wms/";      //AWS
 
     public static CustomerService getCustomerService(){
         return RetrofitClient.getClient(API_URL).create(CustomerService.class);
