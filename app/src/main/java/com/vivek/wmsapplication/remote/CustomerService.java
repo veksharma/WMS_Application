@@ -1,6 +1,7 @@
 package com.vivek.wmsapplication.remote;
 
 import com.vivek.wmsapplication.model.Customer;
+import com.vivek.wmsapplication.model.Result;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public interface CustomerService {
 
     @GET("customer/{code}")
     Call<Customer> getCustomer(@Path("code") String code);
+
+    @GET("customer/find/{code}")
+    Call<Result<Customer>> getCustomerResult(@Path("code") String code);
 
     @POST("customer")
     Call<Customer> addCustomer(@Body Customer customer);

@@ -36,8 +36,11 @@
             android:id="@+id/etSearchCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:imeOptions="actionNext"/>
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+            android:imeOptions="actionNext"
+            android:inputType="textCapCharacters"
+            android:maxLength="10"
+            android:singleLine="true" />
 
         <Button
             android:id="@+id/btnGetCustomer"
@@ -54,6 +57,15 @@
             android:layout_height="wrap_content">
 
         </ListView>
+
+        <Button
+            android:id="@+id/btnPaymentHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#32CD32"
+            android:text="Payment History"
+            android:textColor="#ffffff" />
 
 
     </LinearLayout>

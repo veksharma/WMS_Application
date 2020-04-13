@@ -15,6 +15,9 @@ import com.vivek.wmsapplication.model.Payment;
 import com.vivek.wmsapplication.remote.APIUtils;
 import com.vivek.wmsapplication.remote.CustomerService;
 import com.vivek.wmsapplication.remote.PaymentService;
+import com.vivek.wmsapplication.utils.HindiWords;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,22 +27,22 @@ public class SingleCustomerActivity extends AppCompatActivity {
 
     CustomerService customerService;
     PaymentService paymentService;
-    TextView etCode;
-    TextView etCustomerName;
-    TextView etFatherOrHusbandName;
-    TextView etHouseNumber;
-    TextView etStreetNumber;
-    TextView etPlace;
-    TextView etWardName;
-    TextView etWardNumber;
-    TextView etPhone;
-    TextView etEmail;
-    TextView etCategory;
-    TextView etSubCategory;
-    TextView etCharges;
-    TextView etServiceActivator;
-    TextView etDateOfActivation;
-    TextView etDataCollector;
+    TextView tvCode;
+    TextView tvCustomerName;
+    TextView tvFatherOrHusbandName;
+    TextView tvHouseNumber;
+    TextView tvStreetNumber;
+    TextView tvPlace;
+    TextView tvWardName;
+    TextView tvWardNumber;
+    TextView tvPhone;
+    TextView tvEmail;
+    TextView tvCategory;
+    TextView tvSubCategory;
+    TextView tvCharges;
+    TextView tvServiceActivator;
+    TextView tvDateOfActivation;
+    TextView tvDataCollector;
     Button btnReceivePayment;
     TextView txtId;
     EditText etAmount;
@@ -56,25 +59,26 @@ public class SingleCustomerActivity extends AppCompatActivity {
         setTitle("Receive Payment");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        txtId = (TextView) findViewById(R.id.txtId);
-        etCode = (TextView) findViewById(R.id.etCode);
-        etCustomerName = (TextView) findViewById(R.id.etCustomerName);
-        etFatherOrHusbandName = (TextView) findViewById(R.id.etFatherOrHusbandName);
-        etHouseNumber = (TextView) findViewById(R.id.etHouseNumber);
-        etStreetNumber = (TextView) findViewById(R.id.etStreetNumber);
-        etPlace = (TextView) findViewById(R.id.etPlace);
-        etWardName = (TextView) findViewById(R.id.etWardName);
-        etWardNumber = (TextView) findViewById(R.id.etWardNumber);
-        etPhone = (TextView) findViewById(R.id.etPhone);
-        etEmail = (TextView) findViewById(R.id.etEmail);
-        etCategory = (TextView) findViewById(R.id.etCategory);
-        etSubCategory = (TextView) findViewById(R.id.etSubCategory);
-        etCharges = (TextView) findViewById(R.id.etCharges);
-        etServiceActivator = (TextView) findViewById(R.id.etServiceActivator);
-        etDateOfActivation = (TextView) findViewById(R.id.etDateOfActivation);
-        etDataCollector = (TextView) findViewById(R.id.etDataCollector);
+        txtId = findViewById(R.id.txtId);
+        tvCode = findViewById(R.id.tvCode);
+        tvCustomerName = findViewById(R.id.tvCustomerName);
+        tvFatherOrHusbandName = findViewById(R.id.tvFatherOrHusbandName);
+        tvHouseNumber = findViewById(R.id.tvHouseNumber);
+        tvStreetNumber = findViewById(R.id.tvStreetNumber);
+        tvPlace = findViewById(R.id.tvPlace);
+        tvWardName = findViewById(R.id.tvWardName);
+        tvWardNumber = findViewById(R.id.tvWardNumber);
+        tvPhone = findViewById(R.id.tvPhone);
+        tvEmail = findViewById(R.id.tvEmail);
+        tvCategory = findViewById(R.id.tvCategory);
+        tvSubCategory = findViewById(R.id.tvSubCategory);
+        tvCharges = findViewById(R.id.tvCharges);
+        tvServiceActivator = findViewById(R.id.tvServiceActivator);
+        tvDateOfActivation = findViewById(R.id.tvDateOfActivation);
+        tvDataCollector = findViewById(R.id.tvDataCollector);
         btnReceivePayment = findViewById(R.id.btnReceivePayment);
         etAmount = findViewById(R.id.etAmount);
+        etAmount.setEnabled(false);
         etMode = findViewById(R.id.etMode);
         etReceiveBy = findViewById(R.id.etReceiveBy);
         etReceiveBy.setEnabled(false);
@@ -98,42 +102,43 @@ public class SingleCustomerActivity extends AppCompatActivity {
         String phone = extras.getString("phone");
         final String email = extras.getString("email");
         String category = extras.getString("category");
+        int cat = Integer.parseInt(category);
         String subCategory = extras.getString("sub_category");
+        int subCat = Integer.parseInt(subCategory);
         String charges = extras.getString("charges");
         String serviceActivator = extras.getString("serviceActivator");
         String dateOfActivation = extras.getString("dateOfActivation");
         String dataCollector = extras.getString("dataCollector");
         String username = extras.getString("username");
 
+        ArrayList categories = HindiWords.MyCategories(cat, subCat);
+
         txtId.setText(id);
-        etCode.setText(code);
-        etCustomerName.setText(customerName);
-        etFatherOrHusbandName.setText(fatherOrHusbandName);
-        etHouseNumber.setText(houseNumber);
-        etStreetNumber.setText(streetNumber);
-        etPlace.setText(place);
-        etWardName.setText(wardName);
-        etWardNumber.setText(wardNumber);
-        etPhone.setText(phone);
-        etEmail.setText(email);
-        etCategory.setText(category);
-        etSubCategory.setText(subCategory);
-        etCharges.setText(charges);
-        etServiceActivator.setText(serviceActivator);
-        etDateOfActivation.setText(dateOfActivation);
-        etDataCollector.setText(dataCollector);
+        tvCode.setText(code);
+        tvCustomerName.setText(customerName);
+        tvFatherOrHusbandName.setText(fatherOrHusbandName);
+        tvHouseNumber.setText(houseNumber);
+        tvStreetNumber.setText(streetNumber);
+        tvPlace.setText(place);
+        tvWardName.setText(wardName);
+        tvWardNumber.setText(wardNumber);
+        tvPhone.setText(phone);
+        tvEmail.setText(email);
+        tvCategory.setText(categories.get(0).toString());
+        tvSubCategory.setText(categories.get(1).toString());
+        tvCharges.setText(charges);
+        tvServiceActivator.setText(serviceActivator);
+        tvDateOfActivation.setText(dateOfActivation);
+        tvDataCollector.setText(dataCollector);
         etReceiveBy.setText(username);
+        etAmount.setText(charges);
 
         btnReceivePayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etCode = (TextView) findViewById(R.id.etCode);
-                String code = etCode.getText().toString().trim();
-                etAmount = (EditText) findViewById(R.id.etAmount);
+                String code = tvCode.getText().toString().trim();
                 String amount = etAmount.getText().toString().trim();
-                etMode = (EditText) findViewById(R.id.etMode);
                 String mode = etMode.getText().toString().trim();
-                etReceiveBy = (EditText) findViewById(R.id.etReceiveBy);
                 String receiveBy = etReceiveBy.getText().toString().trim();
                 Payment payment = new Payment();
                 payment.setCode(code);
@@ -143,10 +148,6 @@ public class SingleCustomerActivity extends AppCompatActivity {
                 payment.setExtra(etRemarks.getText().toString());
                 if (amount.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please enter amount", Toast.LENGTH_SHORT).show();
-                } else if (mode.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please enter mode", Toast.LENGTH_SHORT).show();
-                } else if (receiveBy.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please enter receive by name", Toast.LENGTH_SHORT).show();
                 } else {
                     savePayment(payment);
                     finish();
@@ -161,7 +162,13 @@ public class SingleCustomerActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Payment> call, Response<Payment> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(SingleCustomerActivity.this, "Payment saved successfully!", Toast.LENGTH_LONG).show();
+                    if (response.body().getId() == 0) {
+                        Toast.makeText(SingleCustomerActivity.this, "Payment Already Done Today",
+                                Toast.LENGTH_LONG).show();
+                    }else {
+                        Toast.makeText(SingleCustomerActivity.this, "Payment saved successfully!",
+                                Toast.LENGTH_LONG).show();
+                    }
                 } else {
                     Toast.makeText(SingleCustomerActivity.this, "Error!", Toast.LENGTH_SHORT).show();
                 }

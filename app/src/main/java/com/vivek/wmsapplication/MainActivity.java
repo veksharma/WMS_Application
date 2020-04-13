@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.vivek.wmsapplication.model.Customer;
+import com.vivek.wmsapplication.model.Result;
 import com.vivek.wmsapplication.remote.APIUtils;
 import com.vivek.wmsapplication.remote.CustomerService;
 
@@ -27,7 +28,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     Button btnAddCustomer;
-    Button btnGetCustomersList;
+    Button btnPaymentHistory;
     Button btnGetCustomer;
     ListView listView;
     EditText editText;
@@ -47,13 +48,14 @@ public class MainActivity extends AppCompatActivity {
         setTitle("WMS Application");
 
         btnAddCustomer = findViewById(R.id.btnAddCustomer);
-//        btnGetCustomersList = findViewById(R.id.btnGetCustomersList);
+        btnPaymentHistory = findViewById(R.id.btnPaymentHistory);
         btnGetCustomer = findViewById(R.id.btnGetCustomer);
         listView = findViewById(R.id.listView);
         customerService = APIUtils.getCustomerService();
 
         Bundle extras = getIntent().getExtras();
         final String username = extras.getString("username");
+        System.out.println("===========>>>" + username);
 
 
         btnAddCustomer.setOnClickListener(new View.OnClickListener() {
@@ -61,30 +63,35 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
                 intent.putExtra("customer_name", "");
+                intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
-
-        /*btnGetCustomersList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //get users list
-                getCustomersList();
-            }
-        });*/
 
         btnGetCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText = findViewById(R.id.etSearchCustomer);
                 String code = editText.getText().toString();
-                if (code.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Enter customer Code", Toast.LENGTH_SHORT).show();
+                if (code.length() < 10 || code.length() > 10) {
+                    editText.setError("10 Characters Required");
+                    editText.requestFocus();
                 } else {
                     getCustomer(code, username);
                 }
             }
         });
+
+        btnPaymentHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PaymentHistoryActivity.class);
+                intent.putExtra("customer_name", "");
+                intent.putExtra("username", username);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -107,41 +114,46 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     public void getCustomer(String code, final String username) {
-        Call<Customer> call = customerService.getCustomer(code);
-        call.enqueue(new Callback<Customer>() {
+        Call<Result<Customer>> call = customerService.getCustomerResult(code);
+        call.enqueue(new Callback<Result<Customer>>() {
             @Override
-            public void onResponse(Call<Customer> call, Response<Customer> response) {
+            public void onResponse(Call<Result<Customer>> call, Response<Result<Customer>> response) {
                 if (response.isSuccessful()) {
-                       // customer = response.body();
+                    if (response.body().getSuccess()) {
+                        // get customer
+                        Customer customer = response.body().getResponse();
                         //start Show CustomerActivity
                         Intent intent = new Intent(MainActivity.this, SingleCustomerActivity.class);
-                        intent.putExtra("id", String.valueOf(response.body().getId()));
-                        intent.putExtra("code", response.body().getCode());
-                        intent.putExtra("customer_name", response.body().getCustomerName());
-                        intent.putExtra("father_husband_name", response.body().getFatherOrHusbandName());
-                        intent.putExtra("house_number", response.body().getHouseNumber());
-                        intent.putExtra("street_number", response.body().getStreetNumber());
-                        intent.putExtra("place", response.body().getPlace());
-                        intent.putExtra("ward_name", response.body().getWardName());
-                        intent.putExtra("ward_number", response.body().getWardNumber());
-                        intent.putExtra("phone", response.body().getPhone());
-                        intent.putExtra("email", response.body().getEmail());
-                        intent.putExtra("category", response.body().getCategory());
-                        intent.putExtra("sub_category", response.body().getSubCategory());
-                        intent.putExtra("charges", response.body().getCharges());
-                        intent.putExtra("serviceActivator", response.body().getServiceActivator());
-                        intent.putExtra("dateOfActivation", response.body().getDateOfActivation());
-                        intent.putExtra("dataCollector", response.body().getDataCollector());
+                        intent.putExtra("id", String.valueOf(customer.getId()));
+                        intent.putExtra("code", customer.getCode());
+                        intent.putExtra("customer_name", customer.getCustomerName());
+                        intent.putExtra("father_husband_name", customer.getFatherOrHusbandName());
+                        intent.putExtra("house_number", customer.getHouseNumber());
+                        intent.putExtra("street_number", customer.getStreetNumber());
+                        intent.putExtra("place", customer.getPlace());
+                        intent.putExtra("ward_name", customer.getWardName());
+                        intent.putExtra("ward_number", customer.getWardNumber());
+                        intent.putExtra("phone", customer.getPhone());
+                        intent.putExtra("email", customer.getEmail());
+                        intent.putExtra("category", customer.getCategory());
+                        intent.putExtra("sub_category", customer.getSubCategory());
+                        intent.putExtra("charges", customer.getCharges());
+                        intent.putExtra("serviceActivator", customer.getServiceActivator());
+                        intent.putExtra("dateOfActivation", customer.getDateOfActivation());
+                        intent.putExtra("dataCollector", customer.getDataCollector());
                         intent.putExtra("username", username);
                         startActivity(intent);
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Customer Not Found", Toast.LENGTH_SHORT).show();
                     }
-                 else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Check customer Code", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Customer> call, Throwable t) {
+            public void onFailure(Call<Result<Customer>> call, Throwable t) {
                 Log.e("ERROR: ", t.getMessage());
             }
         });

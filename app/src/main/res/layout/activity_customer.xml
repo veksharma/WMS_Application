@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CustomerActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -15,486 +13,476 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_gravity="center_horizontal">
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtId"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="0.5"
-                    android:text="ID" />
+                    android:layout_marginRight="5dp"
+                    android:text="ID"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
-                    android:id="@+id/txtCustomerPanel"
-                    android:layout_width="0dp"
+                    android:id="@+id/txtView"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:text="Customer panel" />
-
+                    android:text="Add Customer or Update"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtCode"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Code" />
+                    android:text="UID"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etCode"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
                     android:hint="Unique Code"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:maxLength="10"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtCustomerName"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Name" />
+                    android:text="Name"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etCustomerName"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
                     android:hint="Customer Name"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtFatherOrHusbandName"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Father or Husband" />
+                    android:text="S/W/O"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etFatherOrHusbandName"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
                     android:hint="Father or Husband Name"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtHouseNumber"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="House no." />
+                    android:text="House"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etHouseNumber"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
                     android:hint="House Number"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtStreetNumber"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Street no." />
+                    android:text="Street"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etStreetNumber"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
-                    android:hint="Gali no., Mohalla, Basti, Block"
+                    android:hint="Gali, Mohalla, Basti, Block"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/txtPlace"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Place" />
-
-                <EditText
-                    android:id="@+id/etPlace"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
-                    android:hint="Place: Sector/Pocket etc."
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtWardName"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Ward" />
+                    android:text="Ward"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <EditText
-                    android:id="@+id/etWardName"
-                    android:layout_width="0dp"
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteWardName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:ems="10"
-                    android:hint="Ward Name"
+                    android:hint="Search Ward Name"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true"></AutoCompleteTextView>
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/etWardName"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ "-->
+                <!--                    android:hint="Ward Name"-->
+                <!--                    android:imeOptions="actionNext"-->
+                <!--                    android:inputType="textCapCharacters"-->
+                <!--                    android:singleLine="true" />-->
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
+
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtWardNumber"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Ward no." />
+                    android:text="Ward no."
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etWardNumber"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
+                    android:digits="1234567890"
                     android:hint="Ward Number"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/txtPlace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Area"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteAreaName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Search Area Name"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true"></AutoCompleteTextView>
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/etPlace"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:hint="Sector/Pocket etc."-->
+                <!--                    android:imeOptions="actionNext"-->
+                <!--                    android:inputType="textCapCharacters"-->
+                <!--                    android:singleLine="true" />-->
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtPhone"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Phone" />
+                    android:text="Phone"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etPhone"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:digits="1234567890"
                     android:ems="10"
                     android:hint="Mobile Number"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:maxLength="10"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtEmail"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Email" />
+                    android:text="Email"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etEmail"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:ems="10"
                     android:hint="Email"
                     android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtCategory"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Category" />
+                    android:text="Category"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <EditText
-                    android:id="@+id/etCategory"
-                    android:layout_width="0dp"
+                <Spinner
+                    android:id="@+id/spCategory"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_marginLeft="10dp"
+                    android:dropDownWidth="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <!--<EditText
+                    android:id="@+id/etCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Category"
                     android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textAllCaps="false" />
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true" />-->
             </TableRow>
 
+
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtSubCategory"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Sub cat." />
+                    android:text="Sub Cat."
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-                <EditText
-                    android:id="@+id/etSubCategory"
-                    android:layout_width="0dp"
+                <Spinner
+                    android:id="@+id/spSubCategory"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:ems="10"
-                    android:hint="Sub Category"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true" />
+                    android:layout_marginLeft="10dp"
+                    android:dropDownWidth="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <!-- <EditText
+                     android:id="@+id/etSubCategory"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:ems="10"
+                     android:hint="Sub Category"
+                     android:imeOptions="actionNext"
+                     android:inputType="textCapCharacters"
+                     android:singleLine="true" />-->
             </TableRow>
 
+
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtCharges"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Charges" />
+                    android:text="Charges"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etCharges"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:digits="1234567890"
                     android:ems="10"
                     android:hint="Charges"
                     android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
                     android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtServiceActivator"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Service Act." />
+                    android:text="Activator"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etServiceActivator"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:ems="10"
                     android:hint="Name of service activator"
                     android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
                     android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtDateOfActivation"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Date of Act." />
+                    android:text="Date"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etDateOfActivation"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:ems="10"
                     android:hint="Date of service activation"
                     android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
                     android:singleLine="true" />
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp">
 
                 <TextView
                     android:id="@+id/txtDataCollector"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Collector" />
+                    android:text="Collector"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
                     android:id="@+id/etDataCollector"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
                     android:ems="10"
                     android:hint="Name of data collector"
-                    android:singleLine="true"/>
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <!--<Button
-                    android:id="@+id/btnDelete"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="" />-->
-
-                <Button
-                    android:id="@+id/btnCreate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#26E02E"
-                    android:text="Save"
-                    android:layout_column="1" />
-
-                <Button
-                    android:id="@+id/btnRead"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#00BCD4"
-                    android:text="Search"
-                    android:layout_column="2" />
-
-                <Button
-                    android:id="@+id/btnUpdate"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#FF5722"
-                    android:text="Update"
-                    android:layout_column="3" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/txtEndOfPage"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/txtEndOfPage2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/txtEndOfPage3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/txtEndOfPage4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-            </TableRow>
 
         </TableLayout>
-
     </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:background="#26E02E"
+            android:text="Save" />
+
+        <Button
+            android:id="@+id/btnRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:background="#00BCD4"
+            android:text="Search" />
+
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FF5722"
+            android:text="Update" />
+    </LinearLayout>
+
+
+</LinearLayout>

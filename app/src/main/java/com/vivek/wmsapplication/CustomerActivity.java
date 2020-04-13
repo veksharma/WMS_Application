@@ -2,19 +2,31 @@ package com.vivek.wmsapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vivek.wmsapplication.model.Customer;
+import com.vivek.wmsapplication.model.Result;
 import com.vivek.wmsapplication.remote.APIUtils;
 import com.vivek.wmsapplication.remote.CustomerService;
+import com.vivek.wmsapplication.utils.HindiWords;
+import com.vivek.wmsapplication.utils.Wards;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,13 +40,11 @@ public class CustomerActivity extends AppCompatActivity {
     EditText etFatherOrHusbandName;
     EditText etHouseNumber;
     EditText etStreetNumber;
-    EditText etPlace;
-    EditText etWardName;
     EditText etWardNumber;
     EditText etPhone;
     EditText etEmail;
-    EditText etCategory;
-    EditText etSubCategory;
+    String etCategory;
+    String etSubCategory;
     EditText etCharges;
     EditText etServiceActivator;
     EditText etDateOfActivation;
@@ -42,10 +52,16 @@ public class CustomerActivity extends AppCompatActivity {
     Button btnCreate;
     Button btnRead;
     Button btnUpdate;
-    Button btnDelete;
     TextView txtId;
-    Customer customer;
+    Spinner spCategory;
+    Spinner spSubCategory;
+    AutoCompleteTextView autoCompleteWardName;
+    AutoCompleteTextView autoCompleteAreaName;
+    ArrayList<String> wardNameList = new ArrayList<>();
+    ArrayList<String> areaNameList = new ArrayList<String>();
 
+    ArrayAdapter<String> arrayAdapter_category;
+    ArrayAdapter<String> arrayAdapter_SubCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,29 +71,107 @@ public class CustomerActivity extends AppCompatActivity {
         setTitle("Customer Panel");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        txtId = (TextView) findViewById(R.id.txtId);
-        etCode = (EditText) findViewById(R.id.etCode);
-        etCustomerName = (EditText) findViewById(R.id.etCustomerName);
-        etFatherOrHusbandName = (EditText) findViewById(R.id.etFatherOrHusbandName);
-        etHouseNumber = (EditText) findViewById(R.id.etHouseNumber);
-        etStreetNumber = (EditText) findViewById(R.id.etStreetNumber);
-        etPlace = (EditText) findViewById(R.id.etPlace);
-        etWardName = (EditText) findViewById(R.id.etWardName);
-        etWardNumber = (EditText) findViewById(R.id.etWardNumber);
-        etPhone = (EditText) findViewById(R.id.etPhone);
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etCategory = (EditText) findViewById(R.id.etCategory);
-        etSubCategory = (EditText) findViewById(R.id.etSubCategory);
-        etCharges = (EditText) findViewById(R.id.etCharges);
-        etServiceActivator = (EditText) findViewById(R.id.etServiceActivator);
-        etDateOfActivation = (EditText) findViewById(R.id.etDateOfActivation);
-        etDataCollector = (EditText) findViewById(R.id.etDataCollector);
-        btnCreate = (Button) findViewById(R.id.btnCreate);
-        btnRead = (Button) findViewById(R.id.btnRead);
-        btnUpdate = (Button) findViewById(R.id.btnUpdate);
-//        btnDelete = (Button) findViewById(R.id.btnDelete);
+        txtId = findViewById(R.id.txtId);
+        etCode = findViewById(R.id.etCode);
+        etCustomerName = findViewById(R.id.etCustomerName);
+        etFatherOrHusbandName = findViewById(R.id.etFatherOrHusbandName);
+        etHouseNumber = findViewById(R.id.etHouseNumber);
+        etStreetNumber = findViewById(R.id.etStreetNumber);
+        etWardNumber = findViewById(R.id.etWardNumber);
+        etWardNumber.setEnabled(false);
+        etPhone = findViewById(R.id.etPhone);
+        etEmail = findViewById(R.id.etEmail);
+        etCharges = findViewById(R.id.etCharges);
+        etServiceActivator = findViewById(R.id.etServiceActivator);
+        etServiceActivator.setEnabled(false);
+        etDateOfActivation = findViewById(R.id.etDateOfActivation);
+        etDateOfActivation.setEnabled(false);
+        etDataCollector = findViewById(R.id.etDataCollector);
+        etDataCollector.setEnabled(false);
+        btnCreate = findViewById(R.id.btnCreate);
+        btnRead = findViewById(R.id.btnRead);
+        btnUpdate = findViewById(R.id.btnUpdate);
+
+        spCategory = findViewById(R.id.spCategory);
+        spSubCategory = findViewById(R.id.spSubCategory);
+
+        autoCompleteWardName = findViewById(R.id.autoCompleteWardName);
+        autoCompleteAreaName = findViewById(R.id.autoCompleteAreaName);
+
+        wardNameList = Wards.getWardsName();
+        areaNameList = new ArrayList<>();
 
         customerService = APIUtils.getCustomerService();
+
+//      AutoCompleteTextView Starts
+
+        ArrayAdapter<String> wardArray = new ArrayAdapter<String>
+                (this, android.R.layout.select_dialog_item, wardNameList);
+        autoCompleteWardName.setAdapter(wardArray);   //setting the adapter data into the AutoCompleteTextView
+        autoCompleteWardName.setThreshold(2);       //will start working from first character
+
+        autoCompleteWardName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object item = parent.getItemAtPosition(position);
+                System.out.println(item.toString());
+                Integer number = Wards.getWardNumber(item.toString());
+                etWardNumber.setText(number.toString());
+                areaNameList = Wards.getAreaName(item.toString());
+                System.out.println("AREA ARRAY " + areaNameList);
+                CallAutoCompleteAreaName(areaNameList);
+            }
+        });
+
+//      AutoCompleteTextView Ends
+
+//      Category Spinner Starts sc=999
+
+        arrayAdapter_category = new ArrayAdapter<>(getApplicationContext(),
+                R.layout.support_simple_spinner_dropdown_item, HindiWords.MyCategories(1, 999));
+        spCategory.setAdapter(arrayAdapter_category);
+
+//        Category Spinner Ends
+
+//        Sub Category Spinner Starts c=888
+
+        spCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                arrayAdapter_SubCategory = new ArrayAdapter<>(getApplicationContext(),
+                        R.layout.support_simple_spinner_dropdown_item, HindiWords.MyCategories(position, 888));
+                int pos = position + 1;
+                etCategory = Integer.toString(pos);
+                spSubCategory.setAdapter(arrayAdapter_SubCategory);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spSubCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                int pos = position + 1;
+                etSubCategory = Integer.toString(pos);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+//        Sub Category Spinner Ends
+
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(new Date());
+        System.out.println("DATE++++++++" + date);
 
         Bundle extras = getIntent().getExtras();
         final String id = extras.getString("id");
@@ -97,6 +191,7 @@ public class CustomerActivity extends AppCompatActivity {
         String serviceActivator = extras.getString("serviceActivator");
         String dateOfActivation = extras.getString("dateOfActivation");
         String dataCollector = extras.getString("dataCollector");
+        String username = extras.getString("username");
 
         txtId.setText(id);
         etCode.setText(code);
@@ -104,43 +199,44 @@ public class CustomerActivity extends AppCompatActivity {
         etFatherOrHusbandName.setText(fatherOrHusbandName);
         etHouseNumber.setText(houseNumber);
         etStreetNumber.setText(streetNumber);
-        etPlace.setText(place);
-        etWardName.setText(wardName);
-        etWardNumber.setText(wardNumber);
+        autoCompleteAreaName.setText(place);
+        autoCompleteWardName.setText(wardName);
         etPhone.setText(phone);
         etEmail.setText(email);
-        etCategory.setText(category);
-        etSubCategory.setText(subCategory);
         etCharges.setText(charges);
-        etServiceActivator.setText(serviceActivator);
-        etDateOfActivation.setText(dateOfActivation);
-        etDataCollector.setText(dataCollector);
+        etServiceActivator.setText(username);
+        etDateOfActivation.setText(date);
+        etDataCollector.setText(username);
 
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etCode = (EditText) findViewById(R.id.etCode);
                 String code = etCode.getText().toString().trim();
-                if (code.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please enter Unique Code", Toast.LENGTH_SHORT).show();
+                String phone = etPhone.getText().toString().trim();
+                if (code.length() < 10 || code.length() > 10) {
+                    etCode.setError("10 Characters Required");
+                    etCode.requestFocus();
+                } else if (phone.length() < 10 || code.length() > 10) {
+                    etPhone.setError("10 Digit Required");
+                    etPhone.requestFocus();
                 } else {
                     Customer c = new Customer();
-                    c.setCode(etCode.getText().toString());
-                    c.setCustomerName(etCustomerName.getText().toString());
-                    c.setFatherOrHusbandName(etFatherOrHusbandName.getText().toString());
-                    c.setHouseNumber(etHouseNumber.getText().toString());
-                    c.setStreetNumber(etStreetNumber.getText().toString());
-                    c.setPlace(etPlace.getText().toString());
-                    c.setWardName(etWardName.getText().toString());
+                    c.setCode(code);
+                    c.setCustomerName(etCustomerName.getText().toString().toUpperCase());
+                    c.setFatherOrHusbandName(etFatherOrHusbandName.getText().toString().toUpperCase());
+                    c.setHouseNumber(etHouseNumber.getText().toString().toUpperCase());
+                    c.setStreetNumber(etStreetNumber.getText().toString().toUpperCase());
+                    c.setPlace(autoCompleteAreaName.getText().toString().toUpperCase());
+                    c.setWardName(autoCompleteWardName.getText().toString().toUpperCase());
                     c.setWardNumber(etWardNumber.getText().toString());
-                    c.setPhone(etPhone.getText().toString());
-                    c.setEmail(etEmail.getText().toString());
-                    c.setCategory(etCategory.getText().toString());
-                    c.setSubCategory(etSubCategory.getText().toString());
-                    c.setCharges(etCharges.getText().toString());
-                    c.setServiceActivator(etServiceActivator.getText().toString());
-                    c.setDateOfActivation(etDateOfActivation.getText().toString());
-                    c.setDataCollector(etDataCollector.getText().toString());
+                    c.setPhone(phone);
+                    c.setEmail(etEmail.getText().toString().toUpperCase());
+                    c.setCategory(etCategory);
+                    c.setSubCategory(etSubCategory);
+                    c.setCharges(etCharges.getText().toString().toUpperCase());
+                    c.setServiceActivator(etServiceActivator.getText().toString().toUpperCase());
+                    c.setDateOfActivation(etDateOfActivation.getText().toString().toUpperCase());
+                    c.setDataCollector(etDataCollector.getText().toString().toUpperCase());
                     addCustomer(c);
                 }
             }
@@ -149,7 +245,7 @@ public class CustomerActivity extends AppCompatActivity {
         btnRead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etCode = (EditText) findViewById(R.id.etCode);
+                etCode = findViewById(R.id.etCode);
                 String code = etCode.getText().toString().trim();
                 if (code.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please enter Code to Search", Toast.LENGTH_SHORT).show();
@@ -162,28 +258,28 @@ public class CustomerActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etCode = (EditText) findViewById(R.id.etCode);
+                etCode = findViewById(R.id.etCode);
                 String code = etCode.getText().toString().trim();
                 if (code.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please enter Code to Update", Toast.LENGTH_SHORT).show();
                 } else {
                     Customer c = new Customer();
-                    c.setCode(etCode.getText().toString());
-                    c.setCustomerName(etCustomerName.getText().toString());
-                    c.setFatherOrHusbandName(etFatherOrHusbandName.getText().toString());
-                    c.setHouseNumber(etHouseNumber.getText().toString());
-                    c.setStreetNumber(etStreetNumber.getText().toString());
-                    c.setPlace(etPlace.getText().toString());
-                    c.setWardName(etWardName.getText().toString());
-                    c.setWardNumber(etWardNumber.getText().toString());
-                    c.setPhone(etPhone.getText().toString());
-                    c.setEmail(etEmail.getText().toString());
-                    c.setCategory(etCategory.getText().toString());
-                    c.setSubCategory(etSubCategory.getText().toString());
-                    c.setCharges(etCharges.getText().toString());
-                    c.setServiceActivator(etServiceActivator.getText().toString());
-                    c.setDateOfActivation(etDateOfActivation.getText().toString());
-                    c.setDataCollector(etDataCollector.getText().toString());
+                    c.setCode(etCode.getText().toString().toUpperCase());
+                    c.setCustomerName(etCustomerName.getText().toString().toUpperCase());
+                    c.setFatherOrHusbandName(etFatherOrHusbandName.getText().toString().toUpperCase());
+                    c.setHouseNumber(etHouseNumber.getText().toString().toUpperCase());
+                    c.setStreetNumber(etStreetNumber.getText().toString().toUpperCase());
+                    c.setPlace(autoCompleteAreaName.getText().toString().toUpperCase());
+                    c.setWardName(autoCompleteWardName.getText().toString().toUpperCase());
+                    c.setWardNumber(etWardNumber.getText().toString().toUpperCase());
+                    c.setPhone(etPhone.getText().toString().toUpperCase());
+                    c.setEmail(etEmail.getText().toString().toUpperCase());
+                    c.setCategory(etCategory);
+                    c.setSubCategory(etSubCategory);
+                    c.setCharges(etCharges.getText().toString().toUpperCase());
+                    c.setServiceActivator(etServiceActivator.getText().toString().toUpperCase());
+                    c.setDateOfActivation(etDateOfActivation.getText().toString().toUpperCase());
+                    c.setDataCollector(etDataCollector.getText().toString().toUpperCase());
                     updateCustomer(code, c);
                 }
             }
@@ -191,26 +287,31 @@ public class CustomerActivity extends AppCompatActivity {
         });
 
 
-        /*btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteCustomer(code);
-
-                Intent intent = new Intent(CustomerActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
-    public void addCustomer(Customer c) {
+    public void CallAutoCompleteAreaName(ArrayList<String> areaNameList) {
+        System.out.println("AREA ARRAY " + areaNameList);
+        ArrayAdapter<String> areaArray = new ArrayAdapter<>
+                (this, android.R.layout.select_dialog_item, areaNameList);
+        autoCompleteAreaName.setThreshold(2);
+        autoCompleteAreaName.setAdapter(areaArray);
+    }
+
+
+    private void addCustomer(Customer c) {
         Call<Customer> call = customerService.addCustomer(c);
         call.enqueue(new Callback<Customer>() {
             @Override
             public void onResponse(Call<Customer> call, Response<Customer> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(CustomerActivity.this, "User created successfully!", Toast.LENGTH_SHORT).show();
+                    if (response.body().getId() == 0) {
+                        Toast.makeText(CustomerActivity.this, "UID already used!!!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(CustomerActivity.this, "User created successfully", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 } else {
-                    Toast.makeText(CustomerActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomerActivity.this, "Error at API", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -223,34 +324,42 @@ public class CustomerActivity extends AppCompatActivity {
     }
 
     public void getCustomer(String code) {
-        Call<Customer> call = customerService.getCustomer(code);
-        call.enqueue(new Callback<Customer>() {
+        Call<Result<Customer>> call = customerService.getCustomerResult(code);
+        call.enqueue(new Callback<Result<Customer>>() {
             @Override
-            public void onResponse(Call<Customer> call, Response<Customer> response) {
+            public void onResponse(Call<Result<Customer>> call, Response<Result<Customer>> response) {
                 if (response.isSuccessful()) {
-                    customer = response.body();
-//                    txtId.setText(response.body().getId());
-                    etCode.setText(response.body().getCode());
-                    etCustomerName.setText(response.body().getCustomerName());
-                    etFatherOrHusbandName.setText(response.body().getFatherOrHusbandName());
-                    etHouseNumber.setText(response.body().getHouseNumber());
-                    etStreetNumber.setText(response.body().getStreetNumber());
-                    etPlace.setText(response.body().getPlace());
-                    etWardName.setText(response.body().getWardName());
-                    etWardNumber.setText(response.body().getWardNumber());
-                    etPhone.setText(response.body().getPhone());
-                    etEmail.setText(response.body().getEmail());
-                    etCategory.setText(response.body().getCategory());
-                    etSubCategory.setText(response.body().getSubCategory());
-                    etCharges.setText(response.body().getCharges());
-                    etServiceActivator.setText(response.body().getServiceActivator());
-                    etDateOfActivation.setText(response.body().getDateOfActivation());
-                    etDataCollector.setText(response.body().getDataCollector());
+                    if (response.body().getSuccess()) {
+                        // get customer
+                        Customer customer = response.body().getResponse();
+//                          txtId.setText(response.body().getId());
+                        etCode.setText(customer.getCode());
+                        etCustomerName.setText(customer.getCustomerName());
+                        etFatherOrHusbandName.setText(customer.getFatherOrHusbandName());
+                        etHouseNumber.setText(customer.getHouseNumber());
+                        etStreetNumber.setText(customer.getStreetNumber());
+                        autoCompleteAreaName.setText(customer.getPlace());
+                        autoCompleteWardName.setText(customer.getWardName());
+                        etWardNumber.setText(customer.getWardNumber());
+                        etPhone.setText(customer.getPhone());
+                        etEmail.setText(customer.getEmail());
+//                          etCategory.setText(customer.getCategory());
+//                          etSubCategory.setText(customer.getSubCategory());
+                        etCharges.setText(customer.getCharges());
+                        etServiceActivator.setText(customer.getServiceActivator());
+                        etDateOfActivation.setText(customer.getDateOfActivation());
+                        etDataCollector.setText(customer.getDataCollector());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Customer Not Found", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error at API", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
-            public void onFailure(Call<Customer> call, Throwable t) {
+            public void onFailure(Call<Result<Customer>> call, Throwable t) {
                 Log.e("ERROR: ", t.getMessage());
             }
         });
@@ -264,7 +373,7 @@ public class CustomerActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(CustomerActivity.this, "User updated successfully!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(CustomerActivity.this, "Error!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomerActivity.this, "Error at API", Toast.LENGTH_SHORT).show();
                 }
             }
 

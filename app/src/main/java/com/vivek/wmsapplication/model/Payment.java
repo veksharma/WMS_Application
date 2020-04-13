@@ -25,6 +25,9 @@ public class Payment {
     @SerializedName("extra")
     @Expose
     private String extra;
+    @SerializedName("total")
+    @Expose
+    private String total;
 
     public Integer getId() {
         return id;
@@ -80,5 +83,13 @@ public class Payment {
 
     public void setExtra(String extra) {
         this.extra = extra;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 }

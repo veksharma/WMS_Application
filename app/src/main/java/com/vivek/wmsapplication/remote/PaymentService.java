@@ -20,6 +20,9 @@ public interface PaymentService {
     @GET("payment/{code}")
     Call<List<Payment>> getPaymentsByCode(@Path("code") String code);
 
+    @GET("paymentreceiveby/{username}/{date}")
+    Call<List<Payment>> getPaymentreceiveby(@Path("username") String username, @Path("date") String date);
+
     @POST("payment")
     Call<Payment> addPayment(@Body Payment payment);
 

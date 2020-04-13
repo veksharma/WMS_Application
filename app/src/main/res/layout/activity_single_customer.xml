@@ -51,15 +51,17 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:text="Code"
+                    android:textColor="#4689C8"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/etCode"
+                    android:id="@+id/tvCode"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
+                    android:textColor="#4689C8"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </TableRow>
@@ -76,7 +78,7 @@
                     android:text="Name" />
 
                 <TextView
-                    android:id="@+id/etCustomerName"
+                    android:id="@+id/tvCustomerName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -95,7 +97,7 @@
                     android:text="Father or Husband" />
 
                 <TextView
-                    android:id="@+id/etFatherOrHusbandName"
+                    android:id="@+id/tvFatherOrHusbandName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -114,7 +116,7 @@
                     android:text="House no." />
 
                 <TextView
-                    android:id="@+id/etHouseNumber"
+                    android:id="@+id/tvHouseNumber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -133,7 +135,7 @@
                     android:text="Street no." />
 
                 <TextView
-                    android:id="@+id/etStreetNumber"
+                    android:id="@+id/tvStreetNumber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -152,7 +154,7 @@
                     android:text="Place" />
 
                 <TextView
-                    android:id="@+id/etPlace"
+                    android:id="@+id/tvPlace"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -171,7 +173,7 @@
                     android:text="Ward" />
 
                 <TextView
-                    android:id="@+id/etWardName"
+                    android:id="@+id/tvWardName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -190,7 +192,7 @@
                     android:text="Ward no." />
 
                 <TextView
-                    android:id="@+id/etWardNumber"
+                    android:id="@+id/tvWardNumber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -209,7 +211,7 @@
                     android:text="Phone" />
 
                 <TextView
-                    android:id="@+id/etPhone"
+                    android:id="@+id/tvPhone"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -228,7 +230,7 @@
                     android:text="Email" />
 
                 <TextView
-                    android:id="@+id/etEmail"
+                    android:id="@+id/tvEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -247,7 +249,7 @@
                     android:text="Category" />
 
                 <TextView
-                    android:id="@+id/etCategory"
+                    android:id="@+id/tvCategory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -266,7 +268,7 @@
                     android:text="Sub cat." />
 
                 <TextView
-                    android:id="@+id/etSubCategory"
+                    android:id="@+id/tvSubCategory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -285,7 +287,7 @@
                     android:text="Charges" />
 
                 <TextView
-                    android:id="@+id/etCharges"
+                    android:id="@+id/tvCharges"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -304,7 +306,7 @@
                     android:text="Service Act." />
 
                 <TextView
-                    android:id="@+id/etServiceActivator"
+                    android:id="@+id/tvServiceActivator"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -323,7 +325,7 @@
                     android:text="Date of Act." />
 
                 <TextView
-                    android:id="@+id/etDateOfActivation"
+                    android:id="@+id/tvDateOfActivation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -342,7 +344,7 @@
                     android:text="Data Collector" />
 
                 <TextView
-                    android:id="@+id/etDataCollector"
+                    android:id="@+id/tvDataCollector"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
@@ -368,7 +370,9 @@
                     android:ems="10"
                     android:hint="Enter receiving amount"
                     android:imeOptions="actionNext"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="#FF0000"
+                    android:textSize="25sp" />
             </TableRow>
 
             <TableRow
@@ -387,9 +391,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:ems="10"
-                    android:hint="Cash or Online"
+                    android:hint="Cash, Cheque, Online"
                     android:imeOptions="actionNext"
+                    android:inputType="textCapCharacters"
                     android:singleLine="true" />
             </TableRow>
 
@@ -411,9 +417,9 @@
                     android:layout_weight="3"
                     android:ems="10"
                     android:hint="Enter receiver name"
-                    android:inputType="none"
                     android:imeOptions="actionNext"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="#000000" />
             </TableRow>
 
             <TableRow
@@ -432,16 +438,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890- "
                     android:ems="10"
                     android:hint="Enter any remarks"
+                    android:inputType="textCapCharacters"
                     android:singleLine="true" />
             </TableRow>
 
-            <!-- <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:layout_margin="5dp"
-                 app:layout_constraintBottom_toBottomOf="parent">-->
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
