@@ -2,10 +2,13 @@ package com.vivek.wmsapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.Editable;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,11 +30,15 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnAddCustomer;
+    Button btnAddResidentialCustomer, btnAddCommercialCustomer;
     Button btnPaymentHistory;
     Button btnGetCustomer;
+    //    Button btnPhotoUpload;
+//    Button btnQRcode;
     ListView listView;
     EditText editText;
+
+    LocationManager locationManager;
 
     private Context context;
     private List<Customer> customers;
@@ -45,11 +52,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setTitle("WMS Application");
+        setTitle(R.string.app_name);
 
-        btnAddCustomer = findViewById(R.id.btnAddCustomer);
+        btnAddResidentialCustomer = findViewById(R.id.btnAddResidentialCustomer);
+//        btnAddCommercialCustomer = findViewById(R.id.btnAddCommercialCustomer);
         btnPaymentHistory = findViewById(R.id.btnPaymentHistory);
         btnGetCustomer = findViewById(R.id.btnGetCustomer);
+//        btnPhotoUpload = findViewById(R.id.btnPhotoUpload);
+//        btnQRcode = findViewById(R.id.btnQRcode);
         listView = findViewById(R.id.listView);
         customerService = APIUtils.getCustomerService();
 
@@ -57,24 +67,38 @@ public class MainActivity extends AppCompatActivity {
         final String username = extras.getString("username");
         System.out.println("===========>>>" + username);
 
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            OnGPS();
+        }
 
-        btnAddCustomer.setOnClickListener(new View.OnClickListener() {
+        btnAddResidentialCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
-                intent.putExtra("customer_name", "");
+                Intent intent = new Intent(MainActivity.this, QRCodeActivity.class);
+                intent.putExtra("property", "residential");
                 intent.putExtra("username", username);
                 startActivity(intent);
             }
         });
+
+//        btnAddCommercialCustomer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, QRCodeActivity.class);
+//                intent.putExtra("username", username);
+//                intent.putExtra("property", "commercial");
+//                startActivity(intent);
+//            }
+//        });
 
         btnGetCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 editText = findViewById(R.id.etSearchCustomer);
                 String code = editText.getText().toString();
-                if (code.length() < 10 || code.length() > 10) {
-                    editText.setError("10 Characters Required");
+                if (code.length() < 13 || code.length() > 13) {
+                    editText.setError("13 Characters Required");
                     editText.requestFocus();
                 } else {
                     getCustomer(code, username);
@@ -92,7 +116,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        btnPhotoUpload.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
+//                intent.putExtra("username", username);
+//                startActivity(intent);
+//            }
+//        });
 
+//        btnQRcode.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, QRCodeActivity.class);
+//                intent.putExtra("username", username);
+//                startActivity(intent);
+//            }
+//        });
+
+
+    }
+
+    private void OnGPS() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("GPS Required").setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     /*public void getCustomersList() {
@@ -124,19 +183,38 @@ public class MainActivity extends AppCompatActivity {
                         Customer customer = response.body().getResponse();
                         //start Show CustomerActivity
                         Intent intent = new Intent(MainActivity.this, SingleCustomerActivity.class);
+                        intent.putExtra("customerObj", customer);
                         intent.putExtra("id", String.valueOf(customer.getId()));
                         intent.putExtra("code", customer.getCode());
                         intent.putExtra("customer_name", customer.getCustomerName());
                         intent.putExtra("father_husband_name", customer.getFatherOrHusbandName());
-                        intent.putExtra("house_number", customer.getHouseNumber());
-                        intent.putExtra("street_number", customer.getStreetNumber());
-                        intent.putExtra("place", customer.getPlace());
-                        intent.putExtra("ward_name", customer.getWardName());
-                        intent.putExtra("ward_number", customer.getWardNumber());
                         intent.putExtra("phone", customer.getPhone());
                         intent.putExtra("email", customer.getEmail());
+                        intent.putExtra("house_number", customer.getHouseNumber());
+                        intent.putExtra("street_number", customer.getStreetNumber());
+                        intent.putExtra("buildingCoveredArea", customer.getBuildingCoveredArea());
+                        intent.putExtra("buildingCarpetArea", customer.getBuildingCarpetArea());
                         intent.putExtra("category", customer.getCategory());
                         intent.putExtra("sub_category", customer.getSubCategory());
+                        intent.putExtra("propertyType", customer.getPropertyType());
+                        intent.putExtra("openLandPlotArea", customer.getLandCoveredArea());
+                        intent.putExtra("landCarpetArea", customer.getLandCarpetArea());
+                        intent.putExtra("buildingUseBy", customer.getBuildingUsedBy());
+                        intent.putExtra("yearOfBuildingConstruction", customer.getYearOfConstruction());
+                        intent.putExtra("buildingFixedMonthlyRentRate", customer.getFixedMonthlyRateForBuilding());
+                        intent.putExtra("annualValueOfBuilding", customer.getBuildingAnnualValue());
+                        intent.putExtra("annualValueAfterExemptionForOwner", customer.getBuildingAnnualValueAfterExemption());
+                        intent.putExtra("annualValueAfterExemptionForTenant", customer.getBuildingAnnualValueAfterExemption());
+                        intent.putExtra("landFixedMonthlyRentRate", customer.getFixedMonthlyRateForLand());
+                        intent.putExtra("annualValueOfLand", customer.getLandAnnualValue());
+                        intent.putExtra("totalAnnualValue", customer.getTotalAnnualValue());
+                        intent.putExtra("taxRate", customer.getTaxRate());
+                        intent.putExtra("taxOnTotalAnnualValue", customer.getTaxOnAnnualValue());
+                        intent.putExtra("waterTax", customer.getWaterTax());
+                        intent.putExtra("dueDate", customer.getDueDate());
+                        intent.putExtra("ward_number", customer.getWardNumber());
+                        intent.putExtra("ward_name", customer.getWardName());
+                        intent.putExtra("place", customer.getPlace());
                         intent.putExtra("charges", customer.getCharges());
                         intent.putExtra("serviceActivator", customer.getServiceActivator());
                         intent.putExtra("dateOfActivation", customer.getDateOfActivation());

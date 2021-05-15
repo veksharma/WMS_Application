@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.vivek.wmsapplication"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -27,7 +27,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.google.code.gson:gson:2.6.1'
+
+    implementation 'com.karumi:dexter:5.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
+    implementation 'com.iceteck.silicompressorr:silicompressor:2.2.3'
+    implementation 'id.zelory:compressor:2.1.0'
+
+
 }

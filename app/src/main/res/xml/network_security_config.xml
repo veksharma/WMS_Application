@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">192.168.0.107</domain>
-        <domain includeSubdomains="true">35.154.149.37</domain>
-        <domain includeSubdomains="true">10.0.3.2</domain>
+        <domain includeSubdomains="true">192.168.1.100</domain>  <!--  tp link -->
+        <domain includeSubdomains="true">192.168.31.102</domain> <!--  mi -->
+        <domain includeSubdomains="true">192.168.1.45</domain> <!--  excitel -->
+        <domain includeSubdomains="true">13.232.197.116</domain>  <!--  amazon vekcms  http://15.206.82.143:8080/wms/users -->
+      <domain includeSubdomains="true">10.0.3.2</domain>
     </domain-config>
 </network-security-config>

@@ -9,17 +9,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btnAddCustomer"
+            android:id="@+id/btnAddResidentialCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="#BA55D3"
-            android:text="Add Customer"
-            android:textColor="#ffffff" />
+            android:background="@drawable/round_btn_border"
+            android:backgroundTint="@color/buttonColor"
+            android:text=" + Add User" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:width="200dp"
+            android:layout_gravity="center"
+            android:text="Shadow Button"
+            android:background="@drawable/shadow_button_layer_list"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/btnAddCommercialCustomer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:background="@drawable/round_btn_border"-->
+<!--            android:backgroundTint="@color/colorPrimaryBackground"-->
+<!--            android:text=" + Add Commercial Property" />-->
 
         <!--<Button
             android:id="@+id/btnGetCustomersList"
@@ -36,20 +63,21 @@
             android:id="@+id/etSearchCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+            android:hint="Enter UID"
             android:imeOptions="actionNext"
             android:inputType="textCapCharacters"
-            android:maxLength="10"
+            android:maxLength="13"
             android:singleLine="true" />
 
         <Button
             android:id="@+id/btnGetCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="#32CD32"
-            android:text="Search Customer for Payment"
-            android:textColor="#ffffff" />
+            android:background="@drawable/round_btn_border"
+            android:backgroundTint="#FFB300"
+            android:text="Search Customer for Payment" />
 
         <ListView
             android:id="@+id/listView"
@@ -62,10 +90,26 @@
             android:id="@+id/btnPaymentHistory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:background="#32CD32"
-            android:text="Payment History"
-            android:textColor="#ffffff" />
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round_btn_border"
+            android:backgroundTint="#BA55D3"
+            android:text="Payment History" />
+
+        <!--        <Button-->
+        <!--            android:id="@+id/btnPhotoUpload"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginBottom="5dp"-->
+        <!--            android:background="#FFB300"-->
+        <!--            android:text="Photo Upload" />-->
+
+        <!--        <Button-->
+        <!--            android:id="@+id/btnQRcode"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginBottom="5dp"-->
+        <!--            android:background="#FFB300"-->
+        <!--            android:text="Generate QR Code" />-->
 
 
     </LinearLayout>

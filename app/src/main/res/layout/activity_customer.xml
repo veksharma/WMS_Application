@@ -1,480 +1,990 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerActivity">
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:scrollbars="none">
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:orientation="vertical">
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="OWNER’S DETAILS"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/txtId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:text="ID"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/txtId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="TextView" />
 
-                <TextView
-                    android:id="@+id/txtView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Customer or Update"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-            </TableRow>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:id="@+id/txtCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UID"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
                     android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
-                    android:hint="Unique Code"
+                    android:hint="UNIQUE CODE"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
-                    android:maxLength="10"
-                    android:singleLine="true" />
-            </TableRow>
+                    android:maxLength="13"
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textColor="#000000" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtCustomerName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCustomerName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Customer Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:hint="OWNER’S NAME"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
+                    android:padding="8dp"
                     android:singleLine="true" />
-            </TableRow>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtFatherOrHusbandName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="S/W/O"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFatherOrHusbandName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Father or Husband Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:hint="OWNER’S FATHER/HUSBAND NAME"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
+                    android:padding="8dp"
                     android:singleLine="true" />
-            </TableRow>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtHouseNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="House"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
-                    android:id="@+id/etHouseNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="House Number"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCaste"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:hint="RF ID"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
+                    android:padding="8dp"
                     android:singleLine="true" />
-            </TableRow>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtStreetNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Street"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
-                    android:id="@+id/etStreetNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="Gali, Mohalla, Basti, Block"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapCharacters"
-                    android:singleLine="true" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:id="@+id/txtWardName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ward"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteWardName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:digits="1234567890"
                     android:ems="10"
-                    android:hint="Search Ward Name"
+                    android:hint="MOBILE NUMBER"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:ems="10"
+                    android:hint="EMAIL ID"
+                    android:imeOptions="actionNext"
+                    android:inputType="textEmailAddress"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etHouseNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:hint="LOCATION OF BUILDING/HOME/PLOT NO."
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
-                    android:singleLine="true"></AutoCompleteTextView>
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <!--                <EditText-->
-                <!--                    android:id="@+id/etWardName"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ "-->
-                <!--                    android:hint="Ward Name"-->
-                <!--                    android:imeOptions="actionNext"-->
-                <!--                    android:inputType="textCapCharacters"-->
-                <!--                    android:singleLine="true" />-->
-            </TableRow>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtWardNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ward no."
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etResidentialAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:hint="OWNER’S RESIDENTIAL ADDRESS"
+                    android:inputType="textCapCharacters"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                <EditText
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOtherDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:hint="OTHER DETAILS IF ANY"
+                    android:inputType="textCapCharacters"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView292"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="ROAD IN FRONT OF PROPERTY"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <Spinner
+                android:id="@+id/spRoadInFront"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownWidth="fill_parent"
+                android:paddingLeft="10dp" />
+
+            <TextView
+                android:id="@+id/textView291"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="WATER CONNECTION"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="YES"
+                    android:id="@+id/water_yes"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="NO"
+                    android:id="@+id/water_no"
+                    android:checked="false"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView261"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="BUILDING OR LAND DETAILS"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="BUILDING"
+                    android:id="@+id/radio_building"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="LAND"
+                    android:id="@+id/radio_land"
+                    android:checked="false"/>
+
+            </RadioGroup>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_background"
+            android:id="@+id/building_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView267"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="BUILDING DETAILS"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBuildingCoveredArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:digits="1234567890"
+                    android:hint="BUILDING COVERED AREA (sq. ft.)"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etBuildingCarpetArea"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890."-->
+<!--                    android:hint="BUILDING CARPET AREA"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <TextView
+                android:id="@+id/textView262"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="NATURE OF BUILDING"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spCategory"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:dropDownWidth="fill_parent"
+                android:paddingLeft="10dp" />
+
+            <Spinner
+                android:id="@+id/spSubCategory"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:dropDownWidth="fill_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_background"
+            android:id="@+id/land_fields"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView268"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="LAND DETAILS"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOpenLandPlotArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:digits="1234567890"
+                    android:hint="OPEN LAND OR PLOT AREA (sq. ft.)"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etLandCarpetArea"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890."-->
+<!--                    android:hint="LAND CARPET AREA"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView263"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="BUILDING OR LAND USE BY"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="OWNER"
+                    android:id="@+id/radio_owner"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="RENTED"
+                    android:id="@+id/radio_rented"
+                    android:checked="false"/>
+
+            </RadioGroup>
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etYearOfBuildingConstruction"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:maxLength="4"-->
+<!--                    android:hint="YEAR OF BUILDING CONSTRUCTION"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+            <LinearLayout
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_background"
+            android:id="@+id/building_annual_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView264"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:text="BUILDING ANNUAL VALUE"-->
+<!--                android:textColor="@color/colorAccent"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView265"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="FIXED MONTHLY RENT RATE FOR THE BUILDING BY THE EXECUTIVE OFFICER" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etBuildingFixedMonthlyRentRate"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:hint="Per Sq. Ft."-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView266"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="ANNUAL VALUE OF BUILDING" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etAnnualValueOfBuilding"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:hint="12 x MONTHLY RENT x CARPET AREA"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView269"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:text="ANNUAL VALUE OF THE BUILDING IN THE EVENT OF IT BEING ORDAINED BY THE OWNER AFTER THE EXEMPTION AS INDICATED SECTION 140 (2) A  \n ( IF PROPERTY USE BY OWNER )"-->
+<!--                    android:gravity="center_horizontal" />-->
+
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/etAnnualValueAfterExemptionForOwner"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@drawable/border_background"-->
+<!--                        android:digits="1234567890"-->
+<!--                        android:imeOptions="actionNext"-->
+<!--                        android:inputType="number"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:singleLine="true" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView270"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:gravity="center_horizontal"-->
+<!--                    android:text="ANNUAL VALUE OF THE BUILDING IN THE EVENT OF IT BEING ORDAINED BY THE OWNER AFTER THE EXEMPTION AS INDICATED SECTION 140 (2) A  \n ( IF PROPERTY USE BY TENANT )" />-->
+
+<!--                <com.google.android.material.textfield.TextInputLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                    <com.google.android.material.textfield.TextInputEditText-->
+<!--                        android:id="@+id/etAnnualValueAfterExemptionForTenant"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@drawable/border_background"-->
+<!--                        android:digits="1234567890"-->
+<!--                        android:imeOptions="actionNext"-->
+<!--                        android:inputType="number"-->
+<!--                        android:padding="8dp"-->
+<!--                        android:singleLine="true" />-->
+<!--                </com.google.android.material.textfield.TextInputLayout>-->
+
+            <TextView
+                android:id="@+id/textView271"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="USER CHARGES"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBuildingTaxRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:digits="1234567890"
+                    android:hint="ENTER USER CHARGES"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBuildingTaxOnAnnualValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:digits="1234567890"
+                    android:hint="USER CHARGES + 18% GST"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etBuildingWaterTax"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:hint="WATER TAX"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:background="@drawable/border_background"
+            android:id="@+id/land_annual_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView274"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:text="LAND ANNUAL VALUE"-->
+<!--                android:textColor="@color/colorAccent"-->
+<!--                android:textSize="20sp"-->
+<!--                android:textStyle="bold" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView272"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="FIXED MONTHLY RENT RATE FOR THE LAND BY THE EXECUTIVE OFFICER" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etLandFixedMonthlyRentRate"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:hint="Per Sq. Ft."-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/textView273"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:text="ANNUAL VALUE OF LAND" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etAnnualValueOfLand"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:hint="12 x MONTHLY RENT x LAND/PLOT AREA"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <TextView
+                android:id="@+id/textView275"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="USER CHARGES"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLandTaxRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:digits="1234567890"
+                    android:hint="ENTER USER CHARGES"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLandTaxOnAnnualValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:digits="1234567890"
+                    android:hint="USER CHARGES + 18% GST"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etLandWaterTax"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@drawable/border_background"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:hint="WATER TAX"-->
+<!--                    android:imeOptions="actionNext"-->
+<!--                    android:inputType="number"-->
+<!--                    android:padding="8dp"-->
+<!--                    android:singleLine="true" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+        </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDueDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
+                    android:digits="1234567890-"
+                    android:hint="DUE DATE"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/txtWardName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Search Ward Name" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteWardName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Search Ward Name"
+                android:imeOptions="actionNext"
+                android:inputType="textCapCharacters"
+                android:singleLine="true"></AutoCompleteTextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etWardNumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
                     android:digits="1234567890"
                     android:hint="Ward Number"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
+                    android:padding="8dp"
                     android:singleLine="true" />
-            </TableRow>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <TextView
+                android:id="@+id/txtPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Search Area Name" />
 
-                <TextView
-                    android:id="@+id/txtPlace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Area"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteAreaName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Search Area Name"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapCharacters"
-                    android:singleLine="true"></AutoCompleteTextView>
-
-                <!--                <EditText-->
-                <!--                    android:id="@+id/etPlace"-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:hint="Sector/Pocket etc."-->
-                <!--                    android:imeOptions="actionNext"-->
-                <!--                    android:inputType="textCapCharacters"-->
-                <!--                    android:singleLine="true" />-->
-            </TableRow>
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:id="@+id/txtPhone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
-                    android:id="@+id/etPhone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:digits="1234567890"
-                    android:ems="10"
-                    android:hint="Mobile Number"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapCharacters"
-                    android:maxLength="10"
-                    android:singleLine="true" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:id="@+id/txtEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
-                    android:id="@+id/etEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Email"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapCharacters"
-                    android:singleLine="true" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:id="@+id/txtCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Category"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <Spinner
-                    android:id="@+id/spCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:dropDownWidth="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <!--<EditText
-                    android:id="@+id/etCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Category"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapCharacters"
-                    android:singleLine="true" />-->
-            </TableRow>
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteAreaName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:hint="Search Area Name"
+                android:imeOptions="actionNext"
+                android:inputType="textCapCharacters"
+                android:singleLine="true"></AutoCompleteTextView>
 
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtSubCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sub Cat."
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <Spinner
-                    android:id="@+id/spSubCategory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:dropDownWidth="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                <!-- <EditText
-                     android:id="@+id/etSubCategory"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:ems="10"
-                     android:hint="Sub Category"
-                     android:imeOptions="actionNext"
-                     android:inputType="textCapCharacters"
-                     android:singleLine="true" />-->
-            </TableRow>
-
-
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
-
-                <TextView
-                    android:id="@+id/txtCharges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Charges"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCharges"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
                     android:digits="1234567890"
                     android:ems="10"
+                    android:visibility="gone"
                     android:hint="Charges"
-                    android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
-                    android:singleLine="true" />
-            </TableRow>
+                    android:padding="8dp"
+                    android:singleLine="true"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/txtServiceActivator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Activator"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etServiceActivator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
                     android:ems="10"
                     android:hint="Name of service activator"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
+                    android:padding="8dp"
                     android:singleLine="true" />
-            </TableRow>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/txtDateOfActivation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Date"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDateOfActivation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
                     android:ems="10"
                     android:hint="Date of service activation"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
+                    android:padding="8dp"
                     android:singleLine="true" />
-            </TableRow>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="10dp">
 
-                <TextView
-                    android:id="@+id/txtDataCollector"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Collector"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etDataCollector"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border_background"
                     android:ems="10"
                     android:hint="Name of data collector"
                     android:imeOptions="actionNext"
                     android:inputType="textCapCharacters"
+                    android:padding="8dp"
                     android:singleLine="true" />
-            </TableRow>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView276"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="DECLARATION"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView277"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="I THE OWNER HEREBY DECLARE THAT THE DETAILS GIVEN IN THIS FORM ARE MY INFORMATION AND ACCORDING TO FAITH, ANY DETAILS GIVEN ARE TRUE AND COMPLETE, NEITHER HIDDEN NOR UNTRUE IS MENTIONED."
+                android:gravity="center_horizontal" />
 
 
-        </TableLayout>
+            <LinearLayout
+                android:id="@+id/layout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/img_sig"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_margin="20dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
+                <Button
+                    android:id="@+id/btn_get_sig"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:backgroundTint="@color/buttonColor"
+                    android:text="get signature" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnCreate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:background="#26E02E"
+                    android:text="Save" />
+
+                <Button
+                    android:id="@+id/btnRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:background="#00BCD4"
+                    android:text="Search" />
+
+                <Button
+                    android:id="@+id/btnUpdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FF5722"
+                    android:text="Update" />
+            </LinearLayout>
+        </LinearLayout>
+
+
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnCreate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:background="#26E02E"
-            android:text="Save" />
-
-        <Button
-            android:id="@+id/btnRead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
-            android:background="#00BCD4"
-            android:text="Search" />
-
-        <Button
-            android:id="@+id/btnUpdate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FF5722"
-            android:text="Update" />
-    </LinearLayout>
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

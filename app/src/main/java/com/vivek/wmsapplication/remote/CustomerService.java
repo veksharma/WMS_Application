@@ -5,12 +5,15 @@ import com.vivek.wmsapplication.model.Result;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface CustomerService {
@@ -24,8 +27,9 @@ public interface CustomerService {
     @GET("customer/find/{code}")
     Call<Result<Customer>> getCustomerResult(@Path("code") String code);
 
+    @Multipart
     @POST("customer")
-    Call<Customer> addCustomer(@Body Customer customer);
+    Call<Customer> addCustomer(@Part("customer") Customer customer, @Part MultipartBody.Part signature, @Part MultipartBody.Part qrcode);
 
     @PUT("customer/{code}")
     Call<Customer> updateCustomer(@Path("code") String code, @Body Customer customer);
